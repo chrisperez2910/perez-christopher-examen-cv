@@ -1,0 +1,23 @@
+/* ==========================================================================
+   CV INTERACTIVO — CHRISTOPHER PÉREZ SOTOMAYOR
+   00. STYLES.CSS — Módulo Principal e Importación
+   --------------------------------------------------------------------------
+   Este es el único archivo CSS vinculado directamente en el <head> de los
+   documentos HTML. Su función es orquestar e importar la arquitectura
+   de estilos modularizada en el orden estricto de cascada.
+   ========================================================================== */
+
+/* 1. Definición del sistema de diseño y variables globales (modo claro / oscuro) */
+@import url("variables.css");
+
+/* 2. Reseteo de estilos por defecto del navegador y reglas base tipográficas */
+@import url("base.css");
+
+/* 3. Estructura de maquetación, encabezado, menú, secciones hero y grids */
+@import url("layout.css");
+
+/* 4. Componentes UI reutilizables (tablas, medidores, acordiones, formularios) */
+@import url("components.css");
+
+/* 5. Keyframes, transiciones y microinteracciones decorativas */
+@import url("animations.css");

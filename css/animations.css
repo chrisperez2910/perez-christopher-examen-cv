@@ -1,0 +1,87 @@
+/* ==========================================================================
+   CV INTERACTIVO — CHRISTOPHER PÉREZ SOTOMAYOR
+   05. ANIMATIONS.CSS — Animaciones y efectos visuales
+   --------------------------------------------------------------------------
+   Este archivo define los movimientos y transiciones de la página.
+   Funciona definiendo primero los efectos con @keyframes y luego aplicando
+   esos efectos mediante clases CSS en los elementos HTML que queramos.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DEFINICIÓN DE ANIMACIONES (@keyframes)
+   -------------------------------------------------------------------------- */
+
+/* Efecto 1: Aparece suavemente mientras sube unos pocos píxeles.
+   Se utiliza para dar vida a las tarjetas e imágenes al cargar la pantalla. */
+@keyframes fade_in {
+  from {
+    opacity: 0;                   /* Inicia invisible */
+    transform: translateY(6px);   /* Ligeramente desplazado hacia abajo */
+  }
+  to {
+    opacity: 1;                   /* Termina totalmente visible */
+    transform: translateY(0);     /* Vuelve a su posición original */
+  }
+}
+
+/* Efecto 2: Aparece desde la parte superior hacia abajo.
+   Se utiliza específicamente en la barra de navegación (header). */
+@keyframes fade_in_down {
+  from {
+    opacity: 0;                    /* Inicia invisible */
+    transform: translateY(-16px);  /* Ligeramente arriba de su posición */
+  }
+  to {
+    opacity: 1;                    /* Termina totalmente visible */
+    transform: translateY(0);      /* Llega a su lugar final */
+  }
+}
+
+/* Efecto 3: Hace que un brillo verde crezca y desaparezca en bucle.
+   Se usa para llamar la atención en la etiqueta de disponibilidad laboral. */
+@keyframes pulse_glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.4); /* Brillo pequeño y concentrado */
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(46, 125, 50, 0);  /* El brillo se expande y se degrada */
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(46, 125, 50, 0);  /* Vuelve al estado inicial */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. CLASES PARA APLICAR LAS ANIMACIONES
+   -------------------------------------------------------------------------- */
+
+/* Aplica la animación de entrada suave a cualquier contenedor */
+.animate_fade_in {
+  animation: fade_in var(--transition_normal) ease-out forwards;
+}
+
+/* Aplica la caída suave al encabezado */
+.animate_header {
+  animation: fade_in_down 0.6s ease-out forwards;
+}
+
+/* Hace que la insignia brille repetidamente de forma infinita */
+.badge_pulse {
+  animation: pulse_glow 2s infinite;
+}
+
+/* --------------------------------------------------------------------------
+   3. ACCESIBILIDAD (A11Y)
+   -------------------------------------------------------------------------- */
+
+/* Regla especial: Si el usuario activó la opción de "reducir movimiento" 
+   en las opciones de su sistema operativo (por mareos o sensibilidad),
+   se desactivan de inmediato todas las animaciones y transiciones. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,248 @@
+/* ==========================================================================
+   CV INTERACTIVO — CHRISTOPHER PÉREZ SOTOMAYOR
+   02. BASE.CSS — Estilos base y tipografía general
+   --------------------------------------------------------------------------
+   Este archivo establece las reglas generales que aplican a todo el sitio web:
+   reset de márgenes, colores de fondo, enlaces y etiquetas de texto comunes.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. RESET BÁSICO
+   -------------------------------------------------------------------------- */
+
+/* Elimina márgenes por defecto y hace que el ancho de las tarjetas/cajas 
+   se calcule de forma exacta incluyendo bordes y rellenos (padding) */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Configuración base de la pantalla */
+html {
+  font-size: 16px;            /* Tamaño de letra base del sitio */
+  scroll-behavior: smooth;    /* Desplazamiento suave al hacer clic en un enlace con ancla (#) */
+  color-scheme: light dark;   /* Permite que controles e insumos nativos se adapten al modo oscuro */
+}
+
+/* Estilos globales del cuerpo de la página */
+body {
+  font-family: var(--font_body);
+  background-color: var(--bg_body);
+  color: var(--text_primary);
+  line-height: 1.7;           /* Altura entre líneas de texto para facilitar la lectura */
+  overflow-x: hidden;         /* Evita que aparezca la barra de desplazamiento horizontal */
+  /* Transición suave para cuando cambia el color de fondo en modo oscuro */
+  transition: background-color var(--transition_normal), color var(--transition_normal);
+  /* Degradados sutiles en las esquinas para dar textura al fondo */
+  background-image:
+    radial-gradient(circle at 12% 15%, rgba(27, 58, 92, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 88% 85%, rgba(217, 164, 65, 0.10) 0%, transparent 45%);
+  background-attachment: fixed; /* El fondo permanece fijo al deslizar */
+}
+
+/* Cambia el color de selección cuando el usuario resalta texto con el ratón */
+::selection {
+  background-color: var(--color_primary);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   2. ENLACES Y ACCESIBILIDAD
+   -------------------------------------------------------------------------- */
+
+/* Estilos predeterminados para todos los enlaces */
+a {
+  color: var(--color_primary_light);
+  text-decoration: none;      /* Quita el subrayado simple */
+  transition: color var(--transition_fast);
+}
+
+/* Cambia el color y subraya cuando el usuario pasa el ratón o navega con teclado */
+a:hover,
+a:focus-visible {
+  color: var(--color_gold);
+  text-decoration: underline;
+}
+
+/* Botón oculto para usuarios de teclado (salta directo al contenido evitando el menú) */
+.skip_link {
+  position: absolute;
+  top: -60px;                 /* Lo oculta arriba fuera de la pantalla */
+  left: 20px;
+  background: var(--color_primary);
+  color: #ffffff;
+  padding: 10px 18px;
+  z-index: 9999;
+  border-radius: var(--radius_sm);
+  font-weight: 600;
+  transition: top var(--transition_fast);
+  box-shadow: var(--shadow_lg);
+}
+
+/* Se vuelve visible únicamente al recibir el foco del teclado (tecla Tab) */
+.skip_link:focus {
+  top: 15px;
+}
+
+/* --------------------------------------------------------------------------
+   3. ENCABEZADOS Y TÍTULOS (H1 - H4)
+   -------------------------------------------------------------------------- */
+
+/* Estilos compartidos para todos los títulos */
+h1, h2, h3, h4 {
+  font-family: var(--font_title);
+  letter-spacing: 0.01em;
+  color: var(--color_primary);
+  line-height: 1.3;
+}
+
+/* Título principal H1 */
+h1 {
+  font-size: clamp(1.5rem, 3vw, 2rem); /* Tamaño adaptable según el tamaño de la pantalla */
+  margin-bottom: var(--space_xs);
+}
+
+/* Subtítulos H2 */
+h2 {
+  font-size: 1.2rem;
+  color: var(--color_primary_light);
+  margin-bottom: var(--space_sm);
+}
+
+/* Subtítulos H3 */
+h3 {
+  font-size: 1.05rem;
+  color: var(--text_secondary);
+  margin-bottom: var(--space_xs);
+}
+
+/* Título de gran tamaño con texto en degradado para la portada (index.html) */
+.titulo_hero {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  background: linear-gradient(135deg, var(--color_primary_dark) 0%, var(--color_primary) 60%, var(--color_gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Título principal de cada página con una línea decorativa debajo */
+.titulo_seccion {
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+  color: var(--color_primary);
+  position: relative;
+  display: inline-block;
+  margin-bottom: var(--space_lg);
+}
+
+/* Crea la línea en degradado debajo de los títulos de sección sin HTML extra */
+.titulo_seccion::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color_gold) 0%, var(--color_primary) 60%, transparent 100%);
+  border-radius: var(--radius_full);
+}
+
+/* Subtítulo de bloques dentro de las páginas (con un borde lateral) */
+.subtitulo_seccion {
+  font-size: 1.4rem;
+  color: var(--color_primary);
+  border-left: 4px solid var(--color_gold);
+  padding-left: var(--space_sm);
+  margin: 0 0 var(--space_md);
+}
+
+/* --------------------------------------------------------------------------
+   4. ETIQUETAS DE TEXTO NATIVAS
+   -------------------------------------------------------------------------- */
+
+p {
+  margin-bottom: var(--space_md);
+  color: var(--text_secondary);
+}
+
+strong {
+  color: var(--text_primary);
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+  color: var(--color_primary_light);
+}
+
+small {
+  font-size: 0.875rem;
+  color: var(--text_muted);
+}
+
+/* Texto resaltado */
+mark {
+  background: linear-gradient(120deg, rgba(217, 164, 65, 0.35) 0%, rgba(27, 58, 92, 0.15) 100%);
+  color: var(--text_primary);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius_sm);
+  border: 1px solid rgba(217, 164, 65, 0.35);
+}
+
+/* Abreviaturas con punto sublineado de ayuda */
+abbr[title] {
+  text-decoration: underline dotted var(--color_primary_light);
+  cursor: help;
+}
+
+/* Bloques de citas o frases destacadas */
+blockquote {
+  position: relative;
+  padding: var(--space_lg) var(--space_xl);
+  margin: var(--space_lg) 0;
+  background: var(--bg_card);
+  border-left: 4px solid var(--color_gold);
+  border-radius: 0 var(--radius_md) var(--radius_md) 0;
+  font-style: italic;
+  box-shadow: var(--shadow_sm);
+}
+
+blockquote footer {
+  margin-top: var(--space_sm);
+  font-style: normal;
+  font-size: 0.92rem;
+  color: var(--color_primary_light);
+  text-align: right;
+}
+
+cite {
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Etiquetas de fecha/tiempo */
+time {
+  font-weight: 600;
+  color: var(--color_primary_light);
+  background: rgba(47, 102, 144, 0.1);
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius_sm);
+  display: inline-block;
+}
+
+/* Bloque para datos de contacto o dirección */
+address {
+  font-style: normal;
+  line-height: 1.8;
+  background: var(--bg_card);
+  padding: var(--space_lg);
+  border-radius: var(--radius_md);
+  border: 1px solid var(--border_color);
+}
+
+/* Línea divisoria horizontal en degradado */
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--border_color) 50%, transparent 100%);
+  margin: var(--space_2xl) 0;
+}

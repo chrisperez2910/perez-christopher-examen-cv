@@ -1,0 +1,472 @@
+/* ==========================================================================
+   CV INTERACTIVO — CHRISTOPHER PÉREZ SOTOMAYOR
+   04. COMPONENTS.CSS — Componentes Reutilizables
+   --------------------------------------------------------------------------
+   En este archivo se definen los estilos para bloques específicos y
+   reutilizables de la web: tablas, barras de progreso, desplegables,
+   listas de definición, multimedia y el formulario de contacto.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TABLA DE IDIOMAS (habilidades.html)
+   -------------------------------------------------------------------------- */
+
+/* Contenedor que permite desplazamiento horizontal en pantallas pequeñas */
+.table_responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin: var(--space_lg) 0;
+  border-radius: var(--radius_md);
+  box-shadow: var(--shadow_sm);
+  border: 1px solid var(--border_color);
+}
+
+/* Estilos básicos de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse; /* Elimina el espacio entre los bordes de las celdas */
+  text-align: left;
+  background: var(--bg_surface);
+  font-size: 0.95rem;
+}
+
+/* Título superior de la tabla */
+caption {
+  caption-side: top;
+  font-family: var(--font_title);
+  font-size: 1.05rem;
+  color: var(--color_primary);
+  padding: var(--space_sm) var(--space_md);
+  text-align: left;
+  font-weight: 600;
+}
+
+/* Encabezado de la tabla */
+thead tr {
+  background: linear-gradient(135deg, var(--color_primary_dark) 0%, var(--color_primary) 100%);
+  color: #ffffff;
+}
+
+th {
+  padding: 1rem;
+  font-family: var(--font_title);
+  letter-spacing: 0.03em;
+  font-weight: 600;
+  border-bottom: 2px solid var(--color_gold);
+}
+
+/* Celdas de datos */
+td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border_glass);
+  color: var(--text_secondary);
+  vertical-align: middle;
+}
+
+/* Color alternado para las filas pares (efecto cebra) */
+tbody tr:nth-child(even) {
+  background-color: rgba(27, 58, 92, 0.03);
+}
+
+/* Resaltado al pasar el ratón sobre una fila */
+tbody tr:hover {
+  background-color: rgba(217, 164, 65, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   2. BARRAS DE PROGRESO Y MEDIDORES (<progress> Y <meter>)
+   -------------------------------------------------------------------------- */
+
+/* Estilos de la barra de progreso general */
+progress {
+  -webkit-appearance: none;
+  appearance: none; /* Quita el diseño por defecto del navegador */
+  width: 100%;
+  height: 12px;
+  border: none;
+  border-radius: var(--radius_full);
+  background-color: rgba(27, 58, 92, 0.1);
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+/* Relleno de la barra en navegadores Chrome, Safari y Edge */
+progress::-webkit-progress-bar {
+  background-color: rgba(27, 58, 92, 0.1);
+  border-radius: var(--radius_full);
+}
+
+progress::-webkit-progress-value {
+  background: linear-gradient(90deg, var(--color_primary) 0%, var(--color_gold) 100%);
+  border-radius: var(--radius_full);
+  transition: width var(--transition_normal);
+}
+
+/* Relleno de la barra en Firefox */
+progress::-moz-progress-bar {
+  background: linear-gradient(90deg, var(--color_primary) 0%, var(--color_gold) 100%);
+  border-radius: var(--radius_full);
+}
+
+/* Estilos para el elemento <meter> (medidor de niveles o habilidades) */
+meter {
+  width: 100%;
+  height: 14px;
+  border-radius: var(--radius_full);
+  margin-top: 4px;
+  display: block;
+}
+
+meter::-webkit-meter-bar {
+  background: rgba(27, 58, 92, 0.1);
+  border-radius: var(--radius_full);
+  border: none;
+}
+
+meter::-webkit-meter-optimum-value,
+meter::-webkit-meter-suboptimum-value,
+meter::-webkit-meter-even-less-optimum-value {
+  background: linear-gradient(90deg, var(--color_primary) 0%, var(--color_gold) 100%);
+  border-radius: var(--radius_full);
+}
+
+meter::-moz-meter-bar {
+  background: linear-gradient(90deg, var(--color_primary) 0%, var(--color_gold) 100%);
+  border-radius: var(--radius_full);
+}
+
+/* Lista contenedora de los medidores */
+.lista_meter {
+  list-style: none;
+}
+
+.lista_meter li {
+  margin-bottom: var(--space_sm);
+}
+
+.lista_meter li span {
+  display: block;
+  font-weight: 600;
+  color: var(--text_primary);
+  margin-bottom: 0.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   3. ACORDEÓN DESPLEGABLE (<details> / <summary>)
+   -------------------------------------------------------------------------- */
+
+details {
+  background: var(--bg_card);
+  border: 1px solid var(--border_color);
+  border-radius: var(--radius_md);
+  margin-top: var(--space_md);
+  overflow: hidden;
+  transition: all var(--transition_normal);
+}
+
+/* Estilos aplicados cuando el acordeón está desplegado */
+details[open] {
+  border-color: var(--color_gold);
+  box-shadow: var(--shadow_md), var(--shadow_gold);
+}
+
+/* Encabezado visible sobre el que se hace clic */
+summary {
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  color: var(--text_primary);
+  cursor: pointer;
+  list-style: none; /* Oculta el icono de flecha predeterminado */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  transition: background-color var(--transition_fast);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Agrega un icono personalizado a la derecha */
+summary::after {
+  content: '✦';
+  font-size: 0.85rem;
+  color: var(--color_gold);
+  transition: transform var(--transition_bounce);
+}
+
+/* Rota el icono cuando se abre el desplegable */
+details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+summary:hover {
+  background-color: rgba(217, 164, 65, 0.1);
+}
+
+/* Estilo para el contenido interno que se revela */
+details > *:not(summary) {
+  padding: 0 1.25rem 1.25rem 1.25rem;
+  animation: fade_in var(--transition_fast) ease-in;
+}
+
+/* --------------------------------------------------------------------------
+   4. LISTAS DE DEFINICIÓN (<dl>, <dt>, <dd>, <dfn>)
+   -------------------------------------------------------------------------- */
+
+dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space_md);
+  margin-top: var(--space_md);
+}
+
+/* Término o título del elemento */
+dt {
+  font-family: var(--font_title);
+  font-size: 1.1rem;
+  color: var(--color_primary);
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+dt::before {
+  content: '❖';
+  font-size: 0.7rem;
+  color: var(--color_gold);
+}
+
+dfn {
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* Descripción asociada al término */
+dd {
+  background: var(--bg_card);
+  border-left: 3px solid var(--color_primary_light);
+  padding: var(--space_md);
+  border-radius: 0 var(--radius_sm) var(--radius_sm) 0;
+  color: var(--text_secondary);
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. GALERÍA MULTIMEDIA (proyectos.html)
+   -------------------------------------------------------------------------- */
+
+#multimedia article {
+  background: var(--bg_card);
+  border: 1px solid var(--border_color);
+  border-radius: var(--radius_md);
+  padding: var(--space_lg);
+}
+
+figure {
+  margin: var(--space_md) 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+figure img,
+figure video {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius_md);
+  border: 1px solid var(--border_color);
+  box-shadow: var(--shadow_md);
+  transition: transform var(--transition_normal);
+}
+
+figure img:hover {
+  transform: scale(1.01);
+}
+
+figcaption {
+  margin-top: var(--space_sm);
+  font-size: 0.86rem;
+  color: var(--text_muted);
+  font-style: italic;
+  text-align: center;
+}
+
+audio {
+  width: 100%;
+  max-width: 550px;
+  border-radius: var(--radius_full);
+  box-shadow: var(--shadow_sm);
+}
+
+/* Ajustes globales de flexibilidad para imágenes y videos */
+video, img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   6. FORMULARIO DE CONTACTO (contacto.html)
+   -------------------------------------------------------------------------- */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space_lg);
+}
+
+fieldset {
+  border: 1px solid var(--border_color);
+  border-radius: var(--radius_md);
+  padding: var(--space_lg);
+  background: var(--bg_card);
+}
+
+legend {
+  font-family: var(--font_title);
+  color: var(--color_primary);
+  padding: 0.2rem 0.8rem;
+  background: var(--bg_surface);
+  border: 1px solid var(--border_color);
+  border-radius: var(--radius_full);
+  font-size: 1rem;
+}
+
+.campo_formulario {
+  margin-bottom: var(--space_md);
+}
+
+label {
+  font-weight: 600;
+  color: var(--text_primary);
+  font-size: 0.95rem;
+  display: inline-block;
+  margin-bottom: 0.3rem;
+}
+
+/* Estilos para las cajas de entrada de texto y selección */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background: var(--bg_input);
+  border: 1px solid var(--border_color);
+  border-radius: var(--radius_sm);
+  color: var(--text_primary);
+  font-family: var(--font_body);
+  font-size: 0.95rem;
+  transition: all var(--transition_fast);
+}
+
+/* Estilo al seleccionar/hacer foco sobre un campo */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--border_focus);
+  box-shadow: 0 0 0 3px rgba(47, 102, 144, 0.2);
+  background: var(--bg_surface);
+}
+
+/* Estado de campo inválido (aplicado desde JavaScript) */
+input.campo_invalido,
+select.campo_invalido,
+textarea.campo_invalido {
+  border-color: var(--color_danger);
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15);
+}
+
+/* Estado de campo válido (aplicado desde JavaScript) */
+input.campo_valido,
+select.campo_valido,
+textarea.campo_valido {
+  border-color: var(--color_success);
+}
+
+/* Mensaje de error situado debajo de cada campo */
+.mensaje_error {
+  display: block;
+  color: var(--color_danger);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 0.3rem;
+  min-height: 1.1em;
+}
+
+/* Recuadro de respuesta global del formulario */
+.mensaje_estado_formulario {
+  padding: var(--space_md) var(--space_lg);
+  border-radius: var(--radius_md);
+  font-weight: 600;
+  display: none;
+}
+
+.mensaje_estado_formulario.visible {
+  display: block;
+  animation: fade_in var(--transition_normal) ease-out;
+}
+
+.mensaje_estado_formulario.exito {
+  background: rgba(46, 125, 50, 0.12);
+  color: var(--color_success);
+  border: 1px solid rgba(46, 125, 50, 0.3);
+}
+
+.mensaje_estado_formulario.error {
+  background: rgba(192, 57, 43, 0.12);
+  color: var(--color_danger);
+  border: 1px solid rgba(192, 57, 43, 0.3);
+}
+
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Estilos de los botones del formulario */
+button[type="submit"],
+button[type="reset"] {
+  padding: 0.8rem 1.7rem;
+  font-family: var(--font_body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: var(--radius_full);
+  cursor: pointer;
+  transition: all var(--transition_bounce);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Botón principal de envío */
+button[type="submit"] {
+  background: linear-gradient(135deg, var(--color_primary) 0%, var(--color_primary_light) 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(27, 58, 92, 0.35);
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(27, 58, 92, 0.45), 0 0 14px rgba(217, 164, 65, 0.35);
+}
+
+/* Botón secundario para limpiar */
+button[type="reset"] {
+  background: transparent;
+  border: 1px solid var(--border_color);
+  color: var(--text_secondary);
+}
+
+button[type="reset"]:hover {
+  background: rgba(27, 58, 92, 0.05);
+  color: var(--text_primary);
+  border-color: var(--text_muted);
+}
