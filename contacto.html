@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto — Christopher Pérez Sotomayor</title>
+    <meta name="description" content="Formulario de contacto de Christopher Pérez Sotomayor, con validación en el cliente mediante JavaScript.">
+
+    <!-- Script en el head para aplicar el tema guardado sin parpadeos (FOUT) -->
+    <script>
+        (function () {
+            try {
+                var tema = localStorage.getItem("cv_tema_preferido");
+                if (tema !== "dark" && tema !== "light") {
+                    tema = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+                        ? "dark"
+                        : "light";
+                }
+                document.documentElement.setAttribute("data-theme", tema);
+            } catch (error) {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a class="skip_link" href="#contenido_principal">Saltar al contenido principal</a>
+
+    <!-- Encabezado con control de tema dinámico -->
+    <header role="banner" class="site_header animate_header">
+        <div class="header_top">
+            <a class="brand_name" href="index.html">Christopher Pérez</a>
+            <nav class="nav_principal" aria-label="Navegación principal del sitio">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="educacion.html">Formación</a></li>
+                    <li><a href="habilidades.html">Habilidades</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+                </ul>
+            </nav>
+            <button type="button" id="theme_toggle_btn" class="theme_toggle_btn" aria-pressed="false">
+                🌙 Modo oscuro
+            </button>
+        </div>
+    </header>
+
+    <main id="contenido_principal">
+
+        <h1 class="titulo_seccion">Formulario de contacto</h1>
+
+        <section id="contacto" class="animate_fade_in" aria-label="Formulario de contacto">
+
+            <!-- Región dinámica para anuncios automáticos a lectores de pantalla (A11y) -->
+            <div id="mensaje_estado_formulario" class="mensaje_estado_formulario" role="status" aria-live="polite"></div>
+
+            <!-- novalidate para delegar toda la lógica de error al script JS -->
+            <form id="formulario_contacto" novalidate>
+                <fieldset>
+                    <legend>Información de contacto</legend>
+
+                    <p class="campo_formulario">
+                        <label for="nombre">Nombre completo (*):</label><br>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez"
+                               required minlength="3" maxlength="60"
+                               pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
+                               aria-describedby="error_nombre">
+                        <span class="mensaje_error" id="error_nombre"></span>
+                    </p>
+
+                    <p class="campo_formulario">
+                        <label for="correo">Correo electrónico (*):</label><br>
+                        <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com"
+                               required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                               aria-describedby="error_correo">
+                        <span class="mensaje_error" id="error_correo"></span>
+                    </p>
+
+                    <p class="campo_formulario">
+                        <label for="telefono">Número telefónico (*):</label><br>
+                        <input type="tel" id="telefono" name="telefono" placeholder="+591 70000000"
+                               pattern="^(\+591\s?)?[267][0-9]{7}$" required
+                               aria-describedby="error_telefono">
+                        <span class="mensaje_error" id="error_telefono"></span>
+                    </p>
+
+                    <p class="campo_formulario">
+                        <label for="motivo">Motivo de contacto (*):</label><br>
+                        <select id="motivo" name="motivo" required aria-describedby="error_motivo">
+                            <option value="">-- Seleccione una opción --</option>
+                            <option value="oferta">Propuesta laboral / Pasantía</option>
+                            <option value="proyecto">Consulta por proyecto</option>
+                            <option value="academico">Contacto académico</option>
+                            <option value="otro">Otro motivo</option>
+                        </select>
+                        <span class="mensaje_error" id="error_motivo"></span>
+                    </p>
+
+                    <p class="campo_formulario">
+                        <label for="mensaje">Mensaje (*):</label><br>
+                        <textarea id="mensaje" name="mensaje" rows="5"
+                                  placeholder="Escriba su mensaje aquí..."
+                                  required minlength="10" maxlength="500"
+                                  aria-describedby="error_mensaje"></textarea>
+                        <span class="mensaje_error" id="error_mensaje"></span>
+                    </p>
+
+                    <p class="campo_formulario">
+                        <input type="checkbox" id="aceptacion" name="aceptacion" required aria-describedby="error_aceptacion">
+                        <label for="aceptacion">Confirmo que la información proporcionada es correcta y acepto ser contactado (*).</label>
+                        <span class="mensaje_error" id="error_aceptacion"></span>
+                    </p>
+
+                    <p>
+                        <button type="submit">Enviar mensaje</button>
+                        <button type="reset">Limpiar formulario</button>
+                    </p>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>© <span id="anio_actual">2026</span> Christopher Pérez Sotomayor. CV interactivo construido con HTML5, CSS3 y JavaScript nativo.</p>
+        <p><small>Última actualización: <time datetime="2026-09-11">11 de septiembre de 2026</time></small></p>
+    </footer>
+
+    <!-- Script de lógica de validación e interactividad -->
+    <script src="js/main.js"></script>
+</body>
+</html>

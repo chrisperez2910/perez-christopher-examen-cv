@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Profesional — Christopher Pérez Sotomayor</title>
+    <meta name="description" content="Perfil profesional de Christopher Pérez Sotomayor: fortalezas, objetivo profesional e intereses.">
+
+    <!-- Script en el head para aplicar el tema guardado sin parpadeos (FOUT) -->
+    <script>
+        (function () {
+            try {
+                var tema = localStorage.getItem("cv_tema_preferido");
+                if (tema !== "dark" && tema !== "light") {
+                    tema = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+                        ? "dark"
+                        : "light";
+                }
+                document.documentElement.setAttribute("data-theme", tema);
+            } catch (error) {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a class="skip_link" href="#contenido_principal">Saltar al contenido principal</a>
+
+    <!-- Encabezado con enlace activo de navegación identificado mediante aria-current -->
+    <header role="banner" class="site_header animate_header">
+        <div class="header_top">
+            <a class="brand_name" href="index.html">Christopher Pérez</a>
+            <nav class="nav_principal" aria-label="Navegación principal del sitio">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="perfil.html" aria-current="page">Perfil</a></li>
+                    <li><a href="educacion.html">Formación</a></li>
+                    <li><a href="habilidades.html">Habilidades</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <button type="button" id="theme_toggle_btn" class="theme_toggle_btn" aria-pressed="false">
+                🌙 Modo oscuro
+            </button>
+        </div>
+    </header>
+
+    <main id="contenido_principal">
+
+        <h1 class="titulo_seccion">Perfil Profesional</h1>
+
+        <!-- Maquetación basada en CSS Grid de 2 columnas (.grid_2_1: columna principal + barra lateral) -->
+        <section id="perfil_profesional" class="grid_2_1 animate_fade_in" aria-label="Perfil profesional detallado">
+
+            <!-- Columna principal: resumen y biografía profesional -->
+            <div>
+                <p>
+                    Hola, mi nombre es <strong>Christopher Pérez Sotomayor</strong>. Soy un estudiante apasionado por la tecnología,
+                    actualmente cursando el <mark>cuarto semestre</mark> de la carrera de Ingeniería de Sistemas en La Paz, Bolivia.
+                </p>
+                <p>
+                    Me considero un profesional en formación con un fuerte interés en el <em>desarrollo de software</em>,
+                    la programación orientada a objetos y las soluciones web eficientes. Mi enfoque combina la lógica analítica
+                    con una constante disposición para aprender nuevas herramientas tecnológicas.
+                </p>
+                <p><strong>Principales fortalezas:</strong></p>
+                <ul>
+                    <li>Facilidad y rapidez para aprender de forma <em>autodidacta</em>.</li>
+                    <li>Alta capacidad de <strong>resolución de problemas</strong> lógicos.</li>
+                    <li>Compromiso, responsabilidad y excelente disposición para el <em>trabajo en equipo</em>.</li>
+                </ul>
+                <p>
+                    <strong>Objetivo profesional:</strong> <mark>Desarrollarme en el área de Ingeniería de Sistemas</mark>, adquiriendo
+                    experiencia práctica dentro del sector tecnológico que me permita aplicar los conocimientos universitarios y
+                    contribuir con soluciones innovadoras en proyectos de desarrollo web y software.
+                </p>
+            </div>
+
+            <!-- Columna secundaria: elemento <aside> para información complementaria -->
+            <aside class="info_adicional" aria-labelledby="informacion_adicional_heading">
+                <h2 class="subtitulo_seccion" id="informacion_adicional_heading">Información adicional</h2>
+                <p>Actualmente me encuentro fortaleciendo mis conocimientos en desarrollo de software, bases de datos y tecnologías web.</p>
+
+                <h3>Objetivos profesionales</h3>
+                <ol>
+                    <li>Fortalecer mis conocimientos en desarrollo de software y programación.</li>
+                    <li>Adquirir experiencia práctica participando en proyectos académicos y profesionales.</li>
+                    <li>Continuar desarrollando habilidades en bases de datos, desarrollo web y trabajo en equipo.</li>
+                </ol>
+
+                <!-- Acordeón interactivo nativo HTML5 con <details> y <summary> -->
+                <details>
+                    <summary>Ver más sobre mis intereses profesionales</summary>
+                    <p>Tengo interés en continuar desarrollando mis conocimientos en desarrollo de software, bases de datos, programación orientada a objetos y tecnologías web.</p>
+                    <p>También busco adquirir experiencia práctica mediante proyectos académicos y futuros proyectos profesionales.</p>
+                </details>
+
+                <h3>Progreso profesional</h3>
+                <p>Avance en mi formación universitaria:</p>
+                <!-- Indicador visual accesible nativo HTML5 con <progress> -->
+                <progress value="4" max="10">4 de 10 semestres</progress>
+            </aside>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>© <span id="anio_actual">2026</span> Christopher Pérez Sotomayor. CV interactivo construido con HTML5, CSS3 y JavaScript nativo.</p>
+        <p><small>Última actualización: <time datetime="2026-09-11">11 de septiembre de 2026</time></small></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

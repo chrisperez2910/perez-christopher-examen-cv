@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos y Multimedia — Christopher Pérez Sotomayor</title>
+    <meta name="description" content="Proyectos destacados y portafolio multimedia de Christopher Pérez Sotomayor.">
+
+    <!-- Script en el head para aplicar el tema guardado sin parpadeos (FOUT) -->
+    <script>
+        (function () {
+            try {
+                var tema = localStorage.getItem("cv_tema_preferido");
+                if (tema !== "dark" && tema !== "light") {
+                    tema = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+                        ? "dark"
+                        : "light";
+                }
+                document.documentElement.setAttribute("data-theme", tema);
+            } catch (error) {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a class="skip_link" href="#contenido_principal">Saltar al contenido principal</a>
+
+    <!-- Encabezado con navegación global y enlace activo marcado con aria-current -->
+    <header role="banner" class="site_header animate_header">
+        <div class="header_top">
+            <a class="brand_name" href="index.html">Christopher Pérez</a>
+            <nav class="nav_principal" aria-label="Navegación principal del sitio">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="educacion.html">Formación</a></li>
+                    <li><a href="habilidades.html">Habilidades</a></li>
+                    <li><a href="proyectos.html" aria-current="page">Proyectos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <button type="button" id="theme_toggle_btn" class="theme_toggle_btn" aria-pressed="false">
+                🌙 Modo oscuro
+            </button>
+        </div>
+    </header>
+
+    <main id="contenido_principal">
+
+        <h1 class="titulo_seccion">Proyectos y portafolio multimedia</h1>
+
+        <!-- Sección 1: Proyectos destacados estructurados en CSS Grid dinámico -->
+        <section id="proyectos_destacados" class="animate_fade_in" aria-labelledby="proyectos_destacados_heading">
+            <h2 class="subtitulo_seccion" id="proyectos_destacados_heading">Proyectos destacados</h2>
+
+            <div class="grid_auto_fit">
+                <article>
+                    <h3>Sistema de Gestión de Cine</h3>
+                    <p><strong>Rol:</strong> Desarrollador del sistema.</p>
+                    <p><strong>Tecnologías:</strong> Java, JavaFX y archivos para persistencia de datos.</p>
+                    <p><strong>Logro:</strong> Sistema funcional para registrar películas, productos y ventas de un cine.</p>
+                </article>
+
+                <article>
+                    <h3>Sistema de Gestión Veterinaria PetShop</h3>
+                    <p><strong>Rol:</strong> Diseñador y desarrollador de la base de datos.</p>
+                    <p><strong>Tecnologías:</strong> SQL, MySQL e interfaz gráfica.</p>
+                    <p><strong>Logro:</strong> Base de datos relacional para gestionar clientes, mascotas y servicios veterinarios.</p>
+                </article>
+
+                <article>
+                    <h3>Comunicación entre Procesos mediante Pipes</h3>
+                    <p><strong>Rol:</strong> Desarrollador del programa.</p>
+                    <p><strong>Tecnologías:</strong> C++ y Linux.</p>
+                    <p><strong>Logro:</strong> Simulación funcional de comunicación entre procesos usando pipes.</p>
+                </article>
+
+                <article>
+                    <h3>Juego Battleship</h3>
+                    <p><strong>Rol:</strong> Desarrollador de la lógica del juego.</p>
+                    <p><strong>Tecnologías:</strong> C++ y programación modular.</p>
+                    <p><strong>Logro:</strong> Juego funcional organizado mediante funciones modulares.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sección 2: Portafolio multimedia con elementos HTML5 semánticos y accesibles -->
+        <section id="multimedia" class="animate_fade_in" aria-labelledby="multimedia_heading">
+            <h2 class="subtitulo_seccion" id="multimedia_heading">Portafolio multimedia</h2>
+
+            <article>
+                <h3>Captura del Sistema de Cine</h3>
+                <!-- Asociación semántica de imágenes mediante <figure> y <figcaption> -->
+                <figure>
+                    <img src="./assets/images/SistemaCineImg.jpeg" width="600" alt="Captura de pantalla de la interfaz del Sistema de Gestión de Cine">
+                    <figcaption>Interfaz desarrollada para el Sistema de Gestión de Cine.</figcaption>
+                </figure>
+            </article>
+
+            <article>
+                <h3>Presentación del sistema en audio</h3>
+                <!-- Reproductor de audio HTML5 con controles y precarga optimizada -->
+                <audio controls preload="metadata">
+                    <source src="./assets/audio/proyectoAudio.mp4" type="audio/mp4">
+                    Tu navegador no soporta el elemento de audio HTML5.
+                </audio>
+            </article>
+
+            <article>
+                <h3>Demostración de proyecto en video</h3>
+                <!-- Reproductor de video HTML5 con imagen de portada (poster) -->
+                <video controls poster="./assets/images/miniaturaSistema.jpg" preload="metadata">
+                    <source src="./assets/video/SistemaCine.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video HTML5.
+                </video>
+            </article>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>© <span id="anio_actual">2026</span> Christopher Pérez Sotomayor. CV interactivo construido con HTML5, CSS3 y JavaScript nativo.</p>
+        <p><small>Última actualización: <time datetime="2026-09-11">11 de septiembre de 2026</time></small></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formación Académica — Christopher Pérez Sotomayor</title>
+    <meta name="description" content="Formación académica y certificaciones de Christopher Pérez Sotomayor.">
+
+    <!-- Script en el head para aplicar el tema guardado evitando parpadeos (FOUT) -->
+    <script>
+        (function () {
+            try {
+                var tema = localStorage.getItem("cv_tema_preferido");
+                if (tema !== "dark" && tema !== "light") {
+                    tema = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+                        ? "dark"
+                        : "light";
+                }
+                document.documentElement.setAttribute("data-theme", tema);
+            } catch (error) {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a class="skip_link" href="#contenido_principal">Saltar al contenido principal</a>
+
+    <!-- Encabezado y navegación principal -->
+    <header role="banner" class="site_header animate_header">
+        <div class="header_top">
+            <a class="brand_name" href="index.html">Christopher Pérez</a>
+            <nav class="nav_principal" aria-label="Navegación principal del sitio">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="educacion.html" aria-current="page">Formación</a></li>
+                    <li><a href="habilidades.html">Habilidades</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <button type="button" id="theme_toggle_btn" class="theme_toggle_btn" aria-pressed="false">
+                🌙 Modo oscuro
+            </button>
+        </div>
+    </header>
+
+    <main id="contenido_principal">
+
+        <h1 class="titulo_seccion">Formación académica y certificaciones</h1>
+
+        <!-- Sección de Formación Académica -->
+        <section id="formacion_academica" class="animate_fade_in" aria-labelledby="formacion_academica_heading">
+            <h2 class="subtitulo_seccion" id="formacion_academica_heading">Formación académica</h2>
+
+            <!-- Bloques de contenido independiente con tag article -->
+            <article>
+                <h3>Ingeniería de Sistemas</h3>
+                <!-- Uso de <abbr> para siglas legibles por lectores de pantalla -->
+                <p><strong>Institución:</strong> <abbr title="Universidad Católica Boliviana">UCB</abbr> — Universidad Católica Boliviana</p>
+                <p><strong>Grado a obtener:</strong> Licenciatura en Ingeniería de Sistemas (Cursando 4to semestre)</p>
+                <!-- Formateo de fechas mediante <time> -->
+                <p><strong>Periodo:</strong> <time datetime="2024">2024</time> - <time datetime="2028">Presente (Esperado 2028)</time></p>
+            </article>
+
+            <article>
+                <h3>Bachiller en Humanidades</h3>
+                <p><strong>Institución:</strong> Instituto Americano</p>
+                <p><strong>Grado obtenido:</strong> Título de Bachiller y Técnico Medio en Sistemas de Información</p>
+                <p><strong>Periodo:</strong> <time datetime="2024">2024</time> - Actualidad (finalización estimada en <time datetime="2028">2028</time>)</p>
+            </article>
+
+            <h3>Línea de tiempo académica</h3>
+            <!-- Lista ordenada con numeración romana por CSS/HTML -->
+            <ol type="I">
+                <li>Ingreso al Instituto Americano para cursar el Bachillerato y el Técnico Medio en Sistemas de Información.</li>
+                <li>Ingreso a la Universidad Católica Boliviana para cursar la Licenciatura en Ingeniería de Sistemas.</li>
+                <li>Avance actual: cuarto semestre, combinando la formación universitaria con proyectos académicos aplicados.</li>
+            </ol>
+        </section>
+
+        <!-- Sección de Certificaciones basada en Lista de Definiciones (<dl>) -->
+        <section id="certificaciones" class="animate_fade_in" aria-labelledby="certificaciones_heading">
+            <h2 class="subtitulo_seccion" id="certificaciones_heading">Certificaciones y logros</h2>
+
+            <dl>
+                <div>
+                    <dt><dfn>Certificación de inglés — Nivel B2</dfn> <time datetime="2026">2026</time></dt>
+                    <dd>Certificado de evaluación TOEIC en el idioma inglés con nivel B2.</dd>
+                </div>
+                <div>
+                    <dt><dfn>Certificado de Inteligencia Artificial de Google</dfn> <time datetime="2025">2025</time></dt>
+                    <dd>Formación y acreditación en el uso de herramientas de inteligencia artificial de Google.</dd>
+                </div>
+                <div>
+                    <dt><dfn>Técnico Medio en Sistemas de Información</dfn> <time datetime="2024">2024</time></dt>
+                    <dd>Formación técnica en sistemas de información y manejo de herramientas tecnológicas.</dd>
+                </div>
+                <div>
+                    <dt><dfn>Ganador de competencia de Física</dfn> <time datetime="2024">2024</time></dt>
+                    <dd>Segundo lugar en una competencia de Física en la Universidad Católica Boliviana.</dd>
+                </div>
+            </dl>
+        </section>
+    </main>
+
+    <!-- Pie de página con script de actualización -->
+    <footer role="contentinfo">
+        <p>© <span id="anio_actual">2026</span> Christopher Pérez Sotomayor. CV interactivo construido con HTML5, CSS3 y JavaScript nativo.</p>
+        <p><small>Última actualización: <time datetime="2026-09-11">11 de septiembre de 2026</time></small></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

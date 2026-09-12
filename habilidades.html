@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habilidades e Idiomas — Christopher Pérez Sotomayor</title>
+    <meta name="description" content="Habilidades técnicas, herramientas de desarrollo e idiomas de Christopher Pérez Sotomayor.">
+
+    <!-- Script en el head para aplicar el tema guardado sin parpadeos (FOUT) -->
+    <script>
+        (function () {
+            try {
+                var tema = localStorage.getItem("cv_tema_preferido");
+                if (tema !== "dark" && tema !== "light") {
+                    tema = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+                        ? "dark"
+                        : "light";
+                }
+                document.documentElement.setAttribute("data-theme", tema);
+            } catch (error) {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a class="skip_link" href="#contenido_principal">Saltar al contenido principal</a>
+
+    <!-- Encabezado con navegación global (marca de página activa mediante aria-current) -->
+    <header role="banner" class="site_header animate_header">
+        <div class="header_top">
+            <a class="brand_name" href="index.html">Christopher Pérez</a>
+            <nav class="nav_principal" aria-label="Navegación principal del sitio">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="educacion.html">Formación</a></li>
+                    <li><a href="habilidades.html" aria-current="page">Habilidades</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <button type="button" id="theme_toggle_btn" class="theme_toggle_btn" aria-pressed="false">
+                🌙 Modo oscuro
+            </button>
+        </div>
+    </header>
+
+    <main id="contenido_principal">
+
+        <h1 class="titulo_seccion">Habilidades técnicas e idiomas</h1>
+
+        <!-- Sección 1: Habilidades técnicas estructuradas en grid adaptativo -->
+        <section id="habilidades_tecnicas" class="animate_fade_in" aria-labelledby="habilidades_tecnicas_heading">
+            <h2 class="subtitulo_seccion" id="habilidades_tecnicas_heading">Habilidades técnicas</h2>
+
+            <div class="grid_auto_fit">
+                <article>
+                    <h3>Lenguajes y tecnologías</h3>
+                    <!-- Elementos <meter> nativos de HTML5 para representación cuantitativa accesible -->
+                    <ul class="lista_meter">
+                        <li><span>HTML5</span><meter min="0" max="100" value="80">80%</meter></li>
+                        <li><span>Java</span><meter min="0" max="100" value="75">75%</meter></li>
+                        <li><span>SQL</span><meter min="0" max="100" value="75">75%</meter></li>
+                        <li><span>PHP</span><meter min="0" max="100" value="65">65%</meter></li>
+                        <li><span>C++</span><meter min="0" max="100" value="70">70%</meter></li>
+                        <li><span>Python</span><meter min="0" max="100" value="60">60%</meter></li>
+                    </ul>
+                </article>
+
+                <article>
+                    <h3>Herramientas de desarrollo</h3>
+                    <ul>
+                        <li>Visual Studio Code</li>
+                        <li>DBeaver</li>
+                        <li>pgAdmin 4</li>
+                        <li>XAMPP</li>
+                        <li>Apache NetBeans</li>
+                    </ul>
+                </article>
+
+                <article>
+                    <h3>Habilidades profesionales</h3>
+                    <ul>
+                        <li>Resolución analítica de problemas lógicos</li>
+                        <li>Capacidad de aprendizaje autodidacta</li>
+                        <li>Trabajo colaborativo en proyectos de ingeniería</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <!-- Sección 2: Tabla de idiomas con atributos de accesibilidad (caption, th scope) -->
+        <section id="idiomas" class="animate_fade_in" aria-labelledby="idiomas_heading">
+            <h2 class="subtitulo_seccion" id="idiomas_heading">Idiomas</h2>
+
+            <div class="table_responsive">
+                <table>
+                    <caption>Nivel de dominio de idiomas</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Idioma</th>
+                            <th scope="col">Lectura</th>
+                            <th scope="col">Escritura</th>
+                            <th scope="col">Conversación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Español</th>
+                            <td>Avanzado</td><td>Avanzado</td><td>Nativo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Inglés</th>
+                            <td>Avanzado</td><td>Intermedio</td><td>Avanzado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>© <span id="anio_actual">2026</span> Christopher Pérez Sotomayor. CV interactivo construido con HTML5, CSS3 y JavaScript nativo.</p>
+        <p><small>Última actualización: <time datetime="2026-09-11">11 de septiembre de 2026</time></small></p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

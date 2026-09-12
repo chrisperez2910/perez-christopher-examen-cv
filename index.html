@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christopher Pérez Sotomayor — CV Interactivo</title>
+    <meta name="description" content="CV interactivo de Christopher Pérez Sotomayor, estudiante de Ingeniería de Sistemas en La Paz, Bolivia.">
+
+    <!--
+        Script INLINE (se repite igual en las 6 páginas):
+        aplica el tema guardado en localStorage ANTES de que el navegador
+        pinte la página. Si esto se hiciera solo desde js/main.js (que se
+        carga al final del <body>), se vería un parpadeo de tema claro
+        durante una fracción de segundo cada vez que el usuario prefiere
+        el modo oscuro. Va envuelto en try/catch por si localStorage no
+        estuviera disponible (ej. navegación privada muy restrictiva).
+    -->
+    <script>
+        (function () {
+            try {
+                var tema = localStorage.getItem("cv_tema_preferido");
+                if (tema !== "dark" && tema !== "light") {
+                    tema = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches)
+                        ? "dark"
+                        : "light";
+                }
+                document.documentElement.setAttribute("data-theme", tema);
+            } catch (error) {
+                document.documentElement.setAttribute("data-theme", "light");
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Único CSS enlazado: styles.css importa variables/base/layout/components/animations -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Enlace de accesibilidad: permite saltar el menú repetido con el teclado -->
+    <a class="skip_link" href="#contenido_principal">Saltar al contenido principal</a>
+
+    <!-- =========================================================
+         ENCABEZADO / NAVEGACIÓN (idéntico en las 6 páginas)
+         Contiene: marca (link a inicio), menú principal (Flexbox)
+         y el botón de modo claro/oscuro (funcionalidad JS #1).
+         ========================================================= -->
+    <header role="banner" class="site_header animate_header">
+        <div class="header_top">
+            <a class="brand_name" href="index.html">Christopher Pérez</a>
+
+            <nav class="nav_principal" aria-label="Navegación principal del sitio">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="perfil.html">Perfil</a></li>
+                    <li><a href="educacion.html">Formación</a></li>
+                    <li><a href="habilidades.html">Habilidades</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <!-- aria-pressed lo actualiza js/main.js según el tema activo -->
+            <button type="button" id="theme_toggle_btn" class="theme_toggle_btn" aria-pressed="false">
+                🌙 Modo oscuro
+            </button>
+        </div>
+    </header>
+
+    <!-- =========================================================
+         HERO — Datos personales unico bloque <h1> de esta página
+         ========================================================= -->
+    <section id="inicio" class="hero_section animate_fade_in" aria-label="Datos personales">
+        <div class="hero_content">
+            <!-- <picture> permite servir una imagen distinta en móvil si se desea -->
+            <picture class="foto_perfil">
+                <source media="(max-width: 600px)" srcset="./assets/images/ChristopherPerezImg.jpeg">
+                <img
+                    src="./assets/images/ChristopherPerezImg.jpeg"
+                    alt="Foto de Christopher Pérez Sotomayor"
+                    width="350"
+                    height="350">
+            </picture>
+
+            <div class="hero_text">
+                <span class="badge_disponible badge_pulse">Disponible para pasantías</span>
+                <h1 class="titulo_hero">Christopher Perez Sotomayor</h1>
+                <p class="profesion">Ingeniero en sistemas (en formación)</p>
+
+                <address>
+                    La Paz, Bolivia <br>
+                    christopherperezsotomayor05@gmail.com <br>
+                    +591 65595616
+                </address>
+
+                <blockquote>
+                    <p>"La única mala sesión de entrenamiento es la que no ocurrió."</p>
+                    <footer>— <cite>Dorian Yates</cite></footer>
+                </blockquote>
+
+                <!-- ===== ENLACES PROFESIONALES =====
+                     rel="noopener noreferrer" es una buena práctica de seguridad
+                     al abrir enlaces externos en una pestaña nueva (target="_blank"). -->
+                <h2>Enlaces profesionales</h2>
+                <ul class="lista_enlaces" id="enlaces_profesionales" aria-label="Enlaces a perfiles profesionales">
+                    <li><a class="enlace_perfil" href="https://github.com/chrisperez2910" target="_blank" rel="noopener noreferrer">🐙 GitHub</a></li>
+                    <li><a class="enlace_perfil" href="https://www.linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a></li>
+                    <li><a class="enlace_perfil" href="mailto:christopherperezsotomayor05@gmail.com">✉️ Correo</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         CONTENIDO PRINCIPAL — resumen breve + accesos directos
+         ========================================================= -->
+    <main id="contenido_principal">
+        <section aria-labelledby="resumen_heading">
+            <h2 id="resumen_heading">Resumen rápido</h2>
+            <p>
+                Este sitio reúne mi perfil profesional, formación académica, habilidades
+                técnicas, proyectos realizados y un formulario de contacto. Usa el menú
+                superior para navegar entre las secciones, o el botón
+                <strong>🌙 Modo oscuro</strong> para cambiar de tema.
+            </p>
+
+            <div class="grid_auto_fit">
+                <article>
+                    <h3>Perfil profesional</h3>
+                    <p>Quién soy, mis fortalezas y mi objetivo profesional.</p>
+                    <p><a href="perfil.html">Ver perfil →</a></p>
+                </article>
+                <article>
+                    <h3>Formación académica</h3>
+                    <p>Mis estudios universitarios y certificaciones obtenidas.</p>
+                    <p><a href="educacion.html">Ver formación →</a></p>
+                </article>
+                <article>
+                    <h3>Habilidades e idiomas</h3>
+                    <p>Lenguajes de programación, herramientas e idiomas que manejo.</p>
+                    <p><a href="habilidades.html">Ver habilidades →</a></p>
+                </article>
+                <article>
+                    <h3>Proyectos y multimedia</h3>
+                    <p>Proyectos académicos destacados, con capturas, audio y video.</p>
+                    <p><a href="proyectos.html">Ver proyectos →</a></p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========================================================
+         PIE DE PÁGINA (idéntico en las 6 páginas)
+         ========================================================= -->
+    <footer role="contentinfo">
+        <p>© <span id="anio_actual">2026</span> Christopher Pérez Sotomayor. CV interactivo construido con HTML5, CSS3 y JavaScript nativo.</p>
+        <p><small>Última actualización: <time datetime="2026-09-11">11 de septiembre de 2026</time></small></p>
+    </footer>
+
+    <!-- Script global: modo oscuro, nav activa, año dinámico y validación del formulario -->
+    <script src="js/main.js"></script>
+</body>
+</html>
